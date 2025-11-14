@@ -1,0 +1,489 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[a4paper]{geometry}
+\geometry{verbose}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{plain}
+\newtheorem{assumption}[thm]{\protect\assumptionname}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}
+\theoremstyle{plain}
+\newtheorem{lem}[thm]{\protect\lemmaname}
+\theoremstyle{definition}
+\newtheorem{example}[thm]{\protect\examplename}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{graphicx}% Required for inserting images
+\usepackage{abbe}
+\usepackage{kotex}
+
+
+\title{glb bandit}
+\author{성찬 안}
+\date{November 2025}
+
+\makeatother
+
+\providecommand{\assumptionname}{Assumption}
+\providecommand{\examplename}{Example}
+\providecommand{\lemmaname}{Lemma}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+% COMMON ABBRVS 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% bold alphabet 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\global\long\def\ab{\mathbf{a}}%
+ 
+\global\long\def\bb{\mathbf{b}}%
+ 
+\global\long\def\cb{\mathbf{c}}%
+ 
+\global\long\def\db{\mathbf{d}}%
+ 
+\global\long\def\eb{\mathbf{e}}%
+ 
+\global\long\def\fb{\mathbf{f}}%
+ 
+\global\long\def\gb{\mathbf{g}}%
+ 
+\global\long\def\hb{\mathbf{h}}%
+ 
+\global\long\def\ib{\mathbf{i}}%
+ 
+\global\long\def\jb{\mathbf{j}}%
+ 
+\global\long\def\kb{\mathbf{k}}%
+ 
+\global\long\def\lb{\mathbf{l}}%
+ 
+\global\long\def\mb{\mathbf{m}}%
+ 
+\global\long\def\nb{\mathbf{n}}%
+ 
+\global\long\def\ob{\mathbf{o}}%
+ 
+\global\long\def\pb{\mathbf{p}}%
+ 
+\global\long\def\qb{\mathbf{q}}%
+ 
+\global\long\def\rb{\mathbf{r}}%
+ 
+\global\long\def\sb{\mathbf{s}}%
+ 
+\global\long\def\tb{\mathbf{t}}%
+ 
+\global\long\def\ub{\mathbf{u}}%
+ 
+\global\long\def\vb{\mathbf{v}}%
+ 
+\global\long\def\wb{\mathbf{w}}%
+ 
+\global\long\def\xb{\mathbf{x}}%
+ 
+\global\long\def\yb{\mathbf{y}}%
+ 
+\global\long\def\zb{\mathbf{z}}%
+ 
+\global\long\def\Ab{\mathbf{A}}%
+ 
+\global\long\def\Bb{\mathbf{B}}%
+ 
+\global\long\def\Cb{\mathbf{C}}%
+ 
+\global\long\def\Db{\mathbf{D}}%
+ 
+\global\long\def\Eb{\mathbf{E}}%
+ 
+\global\long\def\Fb{\mathbf{F}}%
+ 
+\global\long\def\Gb{\mathbf{G}}%
+ 
+\global\long\def\Hb{\mathbf{H}}%
+ 
+\global\long\def\Ib{\mathbf{I}}%
+ 
+\global\long\def\Jb{\mathbf{J}}%
+ 
+\global\long\def\Kb{\mathbf{K}}%
+ 
+\global\long\def\Lb{\mathbf{L}}%
+ 
+\global\long\def\Mb{\mathbf{M}}%
+ 
+\global\long\def\Nb{\mathbf{N}}%
+ 
+\global\long\def\Ob{\mathbf{O}}%
+ 
+\global\long\def\Pb{\mathbf{P}}%
+ 
+\global\long\def\Qb{\mathbf{Q}}%
+ 
+\global\long\def\Rb{\mathbf{R}}%
+ 
+\global\long\def\Sb{\mathbf{S}}%
+ 
+\global\long\def\Tb{\mathbf{T}}%
+ 
+\global\long\def\Ub{\mathbf{U}}%
+ 
+\global\long\def\Vb{\mathbf{V}}%
+ 
+\global\long\def\Wb{\mathbf{W}}%
+ 
+\global\long\def\Xb{\mathbf{X}}%
+ 
+\global\long\def\Yb{\mathbf{Y}}%
+ 
+\global\long\def\Zb{\mathbf{Z}}%
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% calligraphic fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\global\long\def\Acal{\mathcal{A}}%
+ 
+\global\long\def\Bcal{\mathcal{B}}%
+ 
+\global\long\def\Ccal{\mathcal{C}}%
+ 
+\global\long\def\Dcal{\mathcal{D}}%
+ 
+\global\long\def\Ecal{\mathcal{E}}%
+ 
+\global\long\def\Fcal{\mathcal{F}}%
+ 
+\global\long\def\Gcal{\mathcal{G}}%
+ 
+\global\long\def\Hcal{\mathcal{H}}%
+ 
+\global\long\def\Ical{\mathcal{I}}%
+ 
+\global\long\def\Jcal{\mathcal{J}}%
+ 
+\global\long\def\Kcal{\mathcal{K}}%
+ 
+\global\long\def\Lcal{\mathcal{L}}%
+ 
+\global\long\def\Mcal{\mathcal{M}}%
+ 
+\global\long\def\Ncal{\mathcal{N}}%
+ 
+\global\long\def\Ocal{\mathcal{O}}%
+ 
+\global\long\def\Pcal{\mathcal{P}}%
+ 
+\global\long\def\Qcal{\mathcal{Q}}%
+ 
+\global\long\def\Rcal{\mathcal{R}}%
+ 
+\global\long\def\Scal{{\mathcal{S}}}%
+ 
+\global\long\def\Tcal{{\mathcal{T}}}%
+ 
+\global\long\def\Ucal{\mathcal{U}}%
+ 
+\global\long\def\Vcal{\mathcal{V}}%
+ 
+\global\long\def\Wcal{\mathcal{W}}%
+ 
+\global\long\def\Xcal{\mathcal{X}}%
+ 
+\global\long\def\Ycal{\mathcal{Y}}%
+ 
+\global\long\def\Zcal{\mathcal{Z}}%
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Widely accepted definitions %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\global\long\def\BB{\mathbb{B}}%
+ % Ball
+\global\long\def\CC{\mathbb{C}}%
+ % Complex numbers
+\global\long\def\EE{\mathbb{E}}%
+ % Expectation
+\global\long\def\VV{\mathbb{V}}%
+ % Variance
+\global\long\def\II{\mathbb{I}}%
+ % Indicator
+\global\long\def\KK{\mathbb{K}}%
+ % Arbitrary field
+\global\long\def\LL{\mathbb{L}}%
+ % Loss
+\global\long\def\MM{\mathbb{M}}%
+ % Median
+\global\long\def\NN{\mathbb{N}}%
+ % Natural numbers
+\global\long\def\PP{\mathbb{P}}%
+ % Probability
+\global\long\def\QQ{\mathbb{Q}}%
+ % Rationals
+\global\long\def\RR{\mathbb{R}}%
+ % Real numbers
+\global\long\def\ZZ{\mathbb{Z}}%
+ % Integers
+\global\long\def\XX{\mathbb{X}}%
+ 
+\global\long\def\YY{\mathbb{Y}}%
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% bold greek letters %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\global\long\def\alphab{\boldsymbol{\alpha}}%
+ 
+\global\long\def\betab{\boldsymbol{\beta}}%
+ 
+\global\long\def\Sigmab{\boldsymbol{\Sigma}}%
+ 
+\global\long\def\Omegab{\boldsymbol{\Omega}}%
+ 
+\global\long\def\omegab{\boldsymbol{\omega}}%
+ 
+\global\long\def\Gammab{\boldsymbol{\Gamma}}%
+ 
+\global\long\def\Psib{\boldsymbol{\Psi}}%
+ 
+\global\long\def\Thetab{\boldsymbol{\Theta}}%
+ 
+\global\long\def\thetab{\boldsymbol{\theta}}%
+ 
+\global\long\def\taub{\boldsymbol{\tau}}%
+ 
+\global\long\def\epsilonb{\boldsymbol{\epsilon}}%
+ 
+\global\long\def\etab{\boldsymbol{\eta}}%
+ 
+\global\long\def\xib{\boldsymbol{\xi}}%
+ 
+\global\long\def\gammab{\boldsymbol{\gamma}}%
+ 
+\global\long\def\deltab{\boldsymbol{\delta}}%
+ 
+\global\long\def\Deltab{\boldsymbol{\Delta}}%
+ 
+\global\long\def\mub{\boldsymbol{\mu}}%
+ 
+\global\long\def\rhob{\boldsymbol{\rho}}%
+\global\long\def\defeq{\overset{\text{def}}{=}}%
+
+\global\long\def\abs#1{\left|\!#1\!\right|}%
+\global\long\def\CE#1#2{\EE\!\left[\left.#1\right|#2\right]}%
+\global\long\def\norm#1{\left\Vert #1\right\Vert }%
+
+\maketitle
+
+\section{Introduction}
+
+\section{Generalized Linear Bandit Problem}
+
+This section provides background on the GLB problem, including its
+formulation, underlying assumptions, and closely related previous
+research. In the rest of the paper, for a positive semi-definite matrix
+$H\in\RR^{d\times d}$ and vector $x\in\RR^{d}$, we define $\|x\|_{H}=\sqrt{x^{\top}Hx}$
+and denote $\|x\|_{2}$ as the Euclidean norm. For a function $f:\RR\to\RR$,
+its first and second derivatives are denoted by $f'$, and $f''$,
+respectively.
+
+\subsection{Problem Formulation and GLM-UCB~\citep{Filippi2010}}
+
+The generalized linear bandit (GLB) problem considers a $T$-round
+sequential interaction between a learner and the environment. At each
+round $t\in[T]\defeq\{1,\ldots,T\}$, the learner selects a context
+$X_{t}\in\Xcal_{t}$ from the candidate set $\Xcal_{t}\subseteq\RR^{d}$
+and then receives a stochastic reward $R_{t}\in\RR$. The candidate
+set $\Xcal_{t}$ may vary over time, capturing many practical scenarios
+where available options change dynamically. For instance, in product
+recommendation systems, items can be added or removed, requiring the
+algorithm to adapt accordingly. Besides, we denote the chosen action
+by $X_{t}$ to emphasize its stochastic nature, which may depend on
+past data captured by the filtration $\Fcal_{t}=\sigma(X_{1},R_{1},\ldots,X_{t-1},R_{t-1})$
+consisting of the observed data until round $t-1$. In GLBs, the reward
+$R_{t}$ follows an exponential family distribution with the natural
+parameter given by the linear model $Z_{t}=X_{t}^{\top}\theta_{\star}$,
+i.e.,
+
+\begin{equation}
+\PP\big(R_{t}=r\mid X_{t},\Fcal_{t}\big)=g(r)\exp\big(Z_{t}h(r)-m(Z_{t})\big).\label{eq:exp-family}
+\end{equation}
+Here, $\theta_{\star}\in\RR^{d}$ is a $d$-dimensional vector unknown
+to the learner, while the functions $g,h$, and $m$ are known. $g:\RR\to\RR_{+}$
+is the nonnegative normalizing function that ensures $\int\PP(r_{t}=r|X_{t},\Fcal_{t})dr=1$.
+The sufficient statistics $h:\RR\to\RR$ maps the sample to the natural
+parameter $Z_{t}$. The special case $h(r)=r$ is called natural exponential
+family handled in \cite{liu2024almost}. The natural expoential family
+includes Gaussian, Bernoulli, Poisson, negative binomial, but does
+not include some exponential families such as gamma (with known scale
+parameter), Pareto, Beta, Weibull, Chi-squared distributions. 
+
+We make the following standard assumption on the log-partition function
+$m$. We write the parameter set $\Theta$
+\begin{assumption}
+(Log-Partition function) There exists a closed bounded set $\Zcal\subseteq\RR$
+that contains the linear predictor candidate set $\Zcal\supseteq\{x^{\top}\theta:\theta\in\Theta,x\in\cup_{t=1}^{T}\Xcal_{t}\}$,
+which is known to the learner. The log-partition function $m$ is
+three times continuously differentiable on the bounded closed linear
+predictor set $\Zcal$. 
+\end{assumption}
+
+Under this assumption we derive the properties of the mean function
+$\mu\defeq m^{\prime}$ based on the definition of the exponential
+family distribution. 
+\begin{prop}
+\label{prop:log_partition} (Relationship between the log partition
+function and the cumulants) For the sufficient statistic random variable
+$Y_{t}\defeq h(R_{t})$, and the mean function $\mu\defeq m^{\prime}$,
+\begin{align*}
+\EE[Y_{t}|X_{t},\Fcal_{t}] & =\mu(Z_{t}),\\
+\VV[Y_{t}|X_{t},\Fcal_{t}] & =\mu^{\prime}(Z_{t})\\
+\EE\Big[\big(Y_{t}-\EE[Y_{t}|X_{t},\Fcal_{t}]\big)^{3}\Big|X_{t},\Fcal_{t}\Big] & =\mu^{\prime\prime}(Z_{t})
+\end{align*}
+\end{prop}
+
+By Proposition \ref{prop:log_partition}, the derivative of the mean
+function $\mu^{\prime}$ must be positive on the linear predictor
+space $\Zcal$. Using the min-max theorem for the continous function
+we derive the following properties. 
+\begin{prop}
+\label{prop:log_partition_bound} (Mean function on the bounded set)
+There exist constants $L>0$ and $\kappa>0$ depending on $\Zcal$
+and $\mu$ such that $\kappa\le\mu^{\prime}(z)\le L$ for all $z\in\Zcal.$ 
+\end{prop}
+
+\begin{prop}
+\label{prop:tail_bound} (Tail bound for the exponential family.)
+Let $m^{*}(x)\defeq\sup_{z\in\RR}\{zx-m(z)\}$ denote the convex conjugate
+of $m$ and $B_{m}(p,q)\defeq m(p)-m(q)-m^{\prime}(q)(p-q)$ denote
+the Bregman divergence between $p$ and $q$. Writing $\mu_{t}\defeq\mu(Z_{t})$,
+\[
+\PP\big(|Y_{t}-\mu_{t}|\ge x\big)\le e^{-B_{m^{*}}(\mu_{t}+x,\mu_{t}\big)}.
+\]
+\end{prop}
+
+Proposition \ref{prop:tail_bound} shows that the tail probability
+decays exponentially by the Bregman divergence. 
+
+Based on the Proposition \ref{prop:log_partition}, we can derive
+the self-concordant property of $\mu$,
+\begin{lem}
+\label{lem:self_con} (Need computation; Self-concordance is required
+for the exponential family) For any $z\in\Zcal$
+\[
+|\mu^{\prime\prime}(z)|\le\sqrt{L\log\frac{1}{\mu^{\prime}(z)}}\mu^{\prime}(z).
+\]
+\end{lem}
+
+\begin{example}
+(Gamma distribution with known scale parameter) The density of the
+gamma distribution with known scale parameter $\theta>0$ is written
+as 
+\[
+\PP\big(R_{t}=r\mid X_{t},\Fcal_{t}\big)=e^{-\frac{r}{\theta}}\exp\big(z_{t}\log r-\log\Gamma(1+z_{t})-(1+z_{t})\log\theta\big).
+\]
+Here we set $g(r)=e^{-\frac{r}{\theta}}$, $h(r)=\log r$, and $m(z_{t})=\log\Gamma(1+z_{t})+(1+z_{t})\log\theta$.
+The expected value $\EE[r_{t}|X_{t},\Fcal_{t}]=\frac{\alpha}{\theta}=\frac{\EE[\log r_{t}]}{\theta}$.
+(How about making a Table of univariate distributions that indicates
+natural and non-natural distributions?).
+\end{example}
+
+The goal of the learner is to maximize the cumulative expected reward,
+which is equivalent to minimizing the regret,
+
+\[
+REG_{T}=\sum_{t=1}^{T}\mu(x_{t,\star}^{\top}\theta_{\star})-\sum_{t=1}^{T}\mu(X_{t}^{\top}\theta_{\star}).
+\]
+where $\xb_{t,\star}=\arg\min_{x_{t}\in\Xcal_{t}}\mu(x_{t}^{\top}\theta_{\star})$
+is the optimal action. Besides, we have the following standard boundedness
+assumptions used in the GLB literature~\citep{Filippi2010}.
+
+\begin{assumption}[bounded domain] The set $\bigcup_{t\in[T]}\Xcal_{t}$
+is bounded such that $\norm{\xb}_{2}\le1$ for all $\xb\in\Xcal_{t}$,
+$t\in[T]$, and the parameter $\theta_{*}$ satisfies $\norm{\theta_{*}}_{2}\le S$
+for some constant $S>0$ known to the learner. \end{assumption}
+
+\begin{assumption}[bounded link function] The link function $\mu$
+is twice differentiable over its feasible domain. Moreover, there
+exist constants $c_{\mu}>0$ and $L_{\mu}>0$ such that 
+\[
+c_{\mu}\le\mu'(z)\le L_{\mu},\quad\forall z\in[-S,S].
+\]
+Consequently, the function $m$ is strictly convex and $\mu$ is strictly
+increasing. \end{assumption}
+
+\paragraph{GLM-UCB Method and Potentially Large Constant.}
+
+The canonical algorithm for the GLB problem is GLM-UCB~\citep{Filippi2010},
+which resolves the exploration--exploitation trade-off with an upper-confidence-bound
+strategy~\citep{Agrawal1995}. Under Assumptions~1 and~2 and an
+additional condition that the reward $r_{t}$ is non-negative and
+almost surely bounded for all $t\in[T]$, GLM-UCB achieves the regret
+of $\Ocal\bigl(\kappa(\log T)^{3/2}\sqrt{T}\bigr),$ where the $\Ocal(\cdot)$-notation
+is used to highlight the dependence on $\kappa$ and the time horizon
+$T$. The dependence on $T$ matches that of the linear case, where
+the $\widetilde{\Ocal}(\sqrt{T})$ rate is nearly optimal~\citep{Dani2008}.
+The bottleneck lies in its \emph{linear} dependence on the constant
+$\kappa$, which is defined by 
+\[
+\kappa\triangleq\frac{1}{c_{\mu}}=\frac{1}{\inf_{\xb\in\Xcal_{[T]},\,\theta\in\Theta}\mu'(\xb^{\top}\theta)}\quad\text{and}\quad\kappa_{*}\triangleq\frac{1}{\frac{1}{T}\sum_{t=1}^{T}\mu'(\xb_{t,*}^{\top}\theta_{*})},
+\]
+where $\theta=\bigl\{\theta\in\RR^{d}\mid\norm{\theta}_{2}\le S\bigr\},\qquad\Xcal_{[T]}=\bigcup_{t\in[T]}\Xcal_{t}.$
+In the above, we also define $\kappa_{*}$ to reflect the local curvature
+at the optimal actions. The linear dependence on $\kappa$ in GLM-UCB
+is generally undesirable, as $\kappa$ can be prohibitively large
+in practice. Notable examples include the Bernoulli distribution with
+$\mu(z)=1/(1+e^{-z})$ and the Poisson distribution with $\mu(z)=e^{z}$,
+for which $\kappa=\Ocal(e^{S})$, growing exponentially with the parameter-norm
+bound $S$.
+
+\subsection*{2.2\quad{}New Progress with Self-Concordance}
+
+The undesirable linear dependence on~$\kappa$ has motivated the
+development of algorithms with improved theoretical guarantees. By
+leveraging the \emph{self-concordance} of the loss, rooted in convex
+optimization and later used in the analysis of logistic regression~\citep{Bach2010},
+recent studies~\citep{Russac2021,Lee2024,Sawarni2024} have derived
+regret bounds with substantially reduced dependence on~$\kappa$
+for GLB. Following this line, we also adopt the self-concordance assumption
+here.
+
+\begin{assumption}[Self-Concordance] The link function satisfies
+$|\mu''(z)|\le R\cdot\mu'(z)$ for all $z\in\RR$. \end{assumption}
+Assumption~3 holds for many widely used GLMs. For GLMs where the
+reward is almost surely bounded in~$[0,R]$, the link function satisfies
+Assumption~3 with coefficient~$R$~\citep{Sawarni2024}. For example,
+the Bernoulli distribution is 1-self-concordant. Many unbounded GLMs
+also satisfy self-concordance, including the Gaussian distribution
+($R=0$), Poisson distribution ($R=1$), and Exponential distribution
+($R=0$). Leveraging self-concordance, \citet{Lee2024} and \citet{Sawarni2024}
+established improved regret bounds of order~$\Ocal(T/\kappa_{*})$.
+In these results, the potentially large constant~$\kappa_{*}$ appears
+in the denominator, which largely improves the~$\Ocal(\kappa\sqrt{T})$
+bound by~\citet{Filippi2010}. However, their methods still incur~$\Ocal(t)$
+time and space complexities per round. Our goal is to design a method
+with low computational cost while maintaining strong regret guarantees.
+
+\begin{remark}[Unbounded GLMs] Our GLM assumptions are aligned
+with the recent work of~\citet{Lee2024}, which are more general
+than the canonical GLM formulation introduced in~\citet{Filippi2010}
+and later adopted in~\citet{Sawarni2024}. Besides Assumptions~1
+and~2,~\citet{Filippi2010} further require the rewards to be almost
+surely bounded, which automatically implies self-concordance and thus
+satisfies Assumption~3 as shown by~\citet{Sawarni2024}{[}Lemma~2.2{]}.
+Beyond bounded distributions, our GLM formulation accommodates unbounded
+ones, such as Gaussian or Poisson. \end{remark}
+
+\bibliographystyle{abbrvnat}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,2379 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{graphicx}% Required for inserting images
+\usepackage{abbe}
+\usepackage{kotex}
+
+
+\title{glb bandit}
+\author{성찬 안}
+\date{November 2025}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize a4
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% COMMON ABBRVS 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% bold alphabet 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ab}{\mathbf{a}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\bb}{\mathbf{b}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\cb}{\mathbf{c}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\db}{\mathbf{d}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\eb}{\mathbf{e}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\fb}{\mathbf{f}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\gb}{\mathbf{g}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\hb}{\mathbf{h}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\ib}{\mathbf{i}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\jb}{\mathbf{j}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\kb}{\mathbf{k}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\lb}{\mathbf{l}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\mb}{\mathbf{m}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\nb}{\mathbf{n}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\ob}{\mathbf{o}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\pb}{\mathbf{p}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\qb}{\mathbf{q}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\rb}{\mathbf{r}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\sb}{\mathbf{s}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\tb}{\mathbf{t}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\ub}{\mathbf{u}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\vb}{\mathbf{v}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\wb}{\mathbf{w}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\xb}{\mathbf{x}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\yb}{\mathbf{y}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\zb}{\mathbf{z}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ab}{\mathbf{A}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Bb}{\mathbf{B}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Cb}{\mathbf{C}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Db}{\mathbf{D}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Eb}{\mathbf{E}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Fb}{\mathbf{F}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Gb}{\mathbf{G}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Hb}{\mathbf{H}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ib}{\mathbf{I}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Jb}{\mathbf{J}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Kb}{\mathbf{K}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Lb}{\mathbf{L}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Mb}{\mathbf{M}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Nb}{\mathbf{N}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ob}{\mathbf{O}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Pb}{\mathbf{P}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Qb}{\mathbf{Q}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Rb}{\mathbf{R}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Sb}{\mathbf{S}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Tb}{\mathbf{T}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ub}{\mathbf{U}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Vb}{\mathbf{V}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Wb}{\mathbf{W}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Xb}{\mathbf{X}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Yb}{\mathbf{Y}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Zb}{\mathbf{Z}}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% calligraphic fonts
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\Acal}{\mathcal{A}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Bcal}{\mathcal{B}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ccal}{\mathcal{C}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Dcal}{\mathcal{D}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ecal}{\mathcal{E}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Fcal}{\mathcal{F}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Gcal}{\mathcal{G}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Hcal}{\mathcal{H}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ical}{\mathcal{I}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Jcal}{\mathcal{J}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Kcal}{\mathcal{K}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Lcal}{\mathcal{L}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Mcal}{\mathcal{M}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ncal}{\mathcal{N}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ocal}{\mathcal{O}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Pcal}{\mathcal{P}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Qcal}{\mathcal{Q}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Rcal}{\mathcal{R}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Scal}{{\mathcal{S}}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Tcal}{{\mathcal{T}}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ucal}{\mathcal{U}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Vcal}{\mathcal{V}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Wcal}{\mathcal{W}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Xcal}{\mathcal{X}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Ycal}{\mathcal{Y}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Zcal}{\mathcal{Z}}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%% Widely accepted definitions %%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\BB}{\mathbb{B}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Ball
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\CC}{\mathbb{C}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Complex numbers
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\EE}{\mathbb{E}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Expectation
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\VV}{\mathbb{V}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Variance
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\II}{\mathbb{I}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Indicator
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\KK}{\mathbb{K}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Arbitrary field
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\LL}{\mathbb{L}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Loss
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\MM}{\mathbb{M}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Median
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\NN}{\mathbb{N}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Natural numbers
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\PP}{\mathbb{P}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Probability
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\QQ}{\mathbb{Q}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Rationals
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\RR}{\mathbb{R}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Real numbers
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ZZ}{\mathbb{Z}}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Integers
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\XX}{\mathbb{X}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\YY}{\mathbb{Y}}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%% bold greek letters %%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\alphab}{\boldsymbol{\alpha}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\betab}{\boldsymbol{\beta}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Sigmab}{\boldsymbol{\Sigma}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Omegab}{\boldsymbol{\Omega}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\omegab}{\boldsymbol{\omega}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Gammab}{\boldsymbol{\Gamma}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Psib}{\boldsymbol{\Psi}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Thetab}{\boldsymbol{\Theta}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\thetab}{\boldsymbol{\theta}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\taub}{\boldsymbol{\tau}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\epsilonb}{\boldsymbol{\epsilon}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\etab}{\boldsymbol{\eta}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\xib}{\boldsymbol{\xi}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\gammab}{\boldsymbol{\gamma}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\deltab}{\boldsymbol{\delta}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Deltab}{\boldsymbol{\Delta}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\mub}{\boldsymbol{\mu}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\rhob}{\boldsymbol{\rho}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\defeq}{\overset{\text{def}}{=}}
+{\overset{\text{def}}{=}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\abs}[1]{\left|\!#1\!\right|}
+{\left|#1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\CE}[2]{\EE\!\left[\left.#1\right|#2\right]}
+{\EE\left[\left.#1\right|#2\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left\Vert #1\right\Vert }
+{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Section
+Generalized Linear Bandit Problem
+\end_layout
+
+\begin_layout Standard
+This section provides background on the GLB problem,
+ including its formulation,
+ underlying assumptions,
+ and closely related previous research.
+ In the rest of the paper,
+ for a positive semi-definite matrix 
+\begin_inset Formula $H\in\RR^{d\times d}$
+\end_inset
+
+ and vector 
+\begin_inset Formula $x\in\RR^{d}$
+\end_inset
+
+,
+ we define 
+\begin_inset Formula $\|x\|_{H}=\sqrt{x^{\top}Hx}$
+\end_inset
+
+ and denote 
+\begin_inset Formula $\|x\|_{2}$
+\end_inset
+
+ as the Euclidean norm.
+ For a function 
+\begin_inset Formula $f:\RR\to\RR$
+\end_inset
+
+,
+ its first and second derivatives are denoted by 
+\begin_inset Formula $f'$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $f''$
+\end_inset
+
+,
+ respectively.
+\end_layout
+
+\begin_layout Subsection
+Problem Formulation and GLM-UCB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Filippi2010}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The generalized linear bandit (GLB) problem considers a 
+\begin_inset Formula $T$
+\end_inset
+
+-round sequential interaction between a learner and the environment.
+ At each round 
+\begin_inset Formula $t\in[T]\defeq\{1,\ldots,T\}$
+\end_inset
+
+,
+ the learner selects a context 
+\begin_inset Formula $X_{t}\in\Xcal_{t}$
+\end_inset
+
+ from the candidate set 
+\begin_inset Formula $\Xcal_{t}\subseteq\RR^{d}$
+\end_inset
+
+ and then receives a stochastic reward 
+\begin_inset Formula $R_{t}\in\RR$
+\end_inset
+
+.
+ The candidate set 
+\begin_inset Formula $\Xcal_{t}$
+\end_inset
+
+ may vary over time,
+ capturing many practical scenarios where available options change dynamically.
+ For instance,
+ in product recommendation systems,
+ items can be added or removed,
+ requiring the algorithm to adapt accordingly.
+ Besides,
+ we denote the chosen action by 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ to emphasize its stochastic nature,
+ which may depend on past data captured by the filtration 
+\begin_inset Formula $\Fcal_{t}=\sigma(X_{1},R_{1},\ldots,X_{t-1},R_{t-1})$
+\end_inset
+
+ consisting of the observed data until round 
+\begin_inset Formula $t-1$
+\end_inset
+
+.
+ In GLBs,
+ the reward 
+\begin_inset Formula $R_{t}$
+\end_inset
+
+ follows an exponential family distribution with the natural parameter given by the linear model 
+\begin_inset Formula $Z_{t}=X_{t}^{\top}\theta_{\star}$
+\end_inset
+
+,
+ i.e.,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\PP\big(R_{t}=r\mid X_{t},\Fcal_{t}\big)=g(r)\exp\big(Z_{t}h(r)-m(Z_{t})\big).\label{eq:exp-family}
+\end{equation}
+
+\end_inset
+
+Here,
+ 
+\begin_inset Formula $\theta_{\star}\in\RR^{d}$
+\end_inset
+
+ is a 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional vector unknown to the learner,
+ while the functions 
+\begin_inset Formula $g,h$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ are known.
+ 
+\begin_inset Formula $g:\RR\to\RR_{+}$
+\end_inset
+
+ is the nonnegative normalizing function that ensures 
+\begin_inset Formula $\int\PP(r_{t}=r|X_{t},\Fcal_{t})dr=1$
+\end_inset
+
+.
+ The sufficient statistics 
+\begin_inset Formula $h:\RR\to\RR$
+\end_inset
+
+ maps the sample to the natural parameter 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+.
+ The special case 
+\begin_inset Formula $h(r)=r$
+\end_inset
+
+ is called natural exponential family handled in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "liu2024almost"
+literal "false"
+
+\end_inset
+
+.
+ The natural expoential family includes Gaussian,
+ Bernoulli,
+ Poisson,
+ negative binomial,
+ but does not include some exponential families such as gamma (with known scale parameter),
+ Pareto,
+ Beta,
+ Weibull,
+ Chi-squared distributions.
+ 
+\end_layout
+
+\begin_layout Standard
+We make the following standard assumption on the log-partition function 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ We write the parameter set 
+\begin_inset Formula $\Theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Assumption
+(Log-Partition function) There exists a closed bounded set 
+\begin_inset Formula $\Zcal\subseteq\RR$
+\end_inset
+
+ that contains the linear predictor candidate set 
+\begin_inset Formula $\Zcal\supseteq\{x^{\top}\theta:\theta\in\Theta,x\in\cup_{t=1}^{T}\Xcal_{t}\}$
+\end_inset
+
+,
+ which is known to the learner.
+ The log-partition function 
+\begin_inset Formula $m$
+\end_inset
+
+ is three times continuously differentiable on the bounded closed linear predictor set 
+\begin_inset Formula $\Zcal$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The assumption yields useful following properties.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:log_partition"
+
+\end_inset
+
+ (Relationship between the log partition function and the cumulants) For the sufficient statistic random variable 
+\begin_inset Formula $Y_{t}\defeq h(R_{t})$
+\end_inset
+
+,
+ and the mean function 
+\begin_inset Formula $\mu\defeq m^{\prime}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\begin{align*}
+\EE[Y_{t}|X_{t},\Fcal_{t}] & =\mu(Z_{t}),\\
+\VV[Y_{t}|X_{t},\Fcal_{t}] & =\mu^{\prime}(Z_{t})\\
+\EE\Big[\big(Y_{t}-\EE[Y_{t}|X_{t},\Fcal_{t}]\big)^{3}\Big|X_{t},\Fcal_{t}\Big] & =\mu^{\prime\prime}(Z_{t})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:log_partition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ the derivative of the mean function 
+\begin_inset Formula $\mu^{\prime}$
+\end_inset
+
+ must be positive.
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:log_partition_bound"
+
+\end_inset
+
+ (Mean function on the bounded set) There exist constants 
+\begin_inset Formula $L>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa>0$
+\end_inset
+
+ depending on 
+\begin_inset Formula $\Zcal$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ such that 
+\begin_inset Formula $\kappa\le\mu^{\prime}(z)\le L$
+\end_inset
+
+ for all 
+\begin_inset Formula $z\in\Zcal.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The proof of the Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:log_partition_bound"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ is a direct consequence of the min-max theorem for the continuous function.
+ 
+\end_layout
+
+\begin_layout Example
+(Gamma distribution with known scale parameter) The density of the gamma distribution with known scale parameter 
+\begin_inset Formula $\theta>0$
+\end_inset
+
+ is written as 
+\begin_inset Formula 
+\[
+\PP\big(R_{t}=r\mid X_{t},\Fcal_{t}\big)=e^{-\frac{r}{\theta}}\exp\big(z_{t}\log r-\log\Gamma(1+z_{t})-(1+z_{t})\log\theta\big).
+\]
+
+\end_inset
+
+Here we set 
+\begin_inset Formula $g(r)=e^{-\frac{r}{\theta}}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $h(r)=\log r$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $m(z_{t})=\log\Gamma(1+z_{t})+(1+z_{t})\log\theta$
+\end_inset
+
+.
+ The expected value 
+\begin_inset Formula $\EE[r_{t}|X_{t},\Fcal_{t}]=\frac{\alpha}{\theta}=\frac{\EE[\log r_{t}]}{\theta}$
+\end_inset
+
+.
+ (How about making a Table of univariate distributions that indicates natural and non-natural distributions?).
+\end_layout
+
+\begin_layout Standard
+is which provides the intrinsic weighting of the variable 
+\begin_inset Formula $r$
+\end_inset
+
+,
+ while 
+\begin_inset Formula $m(z)$
+\end_inset
+
+ is a twice continuously differentiable function used for normalizing the distribution.
+ Besides,
+ 
+\begin_inset Formula $g:\RR\to\RR$
+\end_inset
+
+ is the dispersion function controlling the variability of the distribution,
+ and 
+\begin_inset Formula $\tau\in\RR$
+\end_inset
+
+ is a known parameter.
+ The expectation and variance of the exponential family distribution can be calculated as 
+\begin_inset Formula $\EE[r\mid z]=\mu(z)\triangleq m'(z)\quad\text{and}\quad\Var(r\mid z)=g(\tau)m''(z)$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Wainwright2008}
+\end_layout
+
+\end_inset
+
+.
+ Common examples of
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:exp-family"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ include Gaussian,
+ Bernoulli,
+ and Poisson distributions.
+ The goal of the learner is to maximize the cumulative expected reward,
+ which is equivalent to minimizing the regret,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+REG_{T}=\sum_{t=1}^{T}\mu(\xb_{t,*}^{\top}\theta_{*})-\sum_{t=1}^{T}\mu(X_{t}^{\top}\theta_{*}).
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\xb_{t,*}=\arg\min_{\xb\in\Xcal_{t}}\mu(\xb^{\top}\theta_{*})$
+\end_inset
+
+ is the optimal action.
+ Besides,
+ we have the following standard boundedness assumptions used in the GLB literature
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Filippi2010}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{assumption}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+bounded domain
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ The set 
+\begin_inset Formula $\bigcup_{t\in[T]}\Xcal_{t}$
+\end_inset
+
+ is bounded such that 
+\begin_inset Formula $\norm{\xb}_{2}\le1$
+\end_inset
+
+ for all 
+\begin_inset Formula $\xb\in\Xcal_{t}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $t\in[T]$
+\end_inset
+
+,
+ and the parameter 
+\begin_inset Formula $\theta_{*}$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $\norm{\theta_{*}}_{2}\le S$
+\end_inset
+
+ for some constant 
+\begin_inset Formula $S>0$
+\end_inset
+
+ known to the learner.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{assumption}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{assumption}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+bounded link function
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ The link function 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is twice differentiable over its feasible domain.
+ Moreover,
+ there exist constants 
+\begin_inset Formula $c_{\mu}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{\mu}>0$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+c_{\mu}\le\mu'(z)\le L_{\mu},\quad\forall z\in[-S,S].
+\]
+
+\end_inset
+
+Consequently,
+ the function 
+\begin_inset Formula $m$
+\end_inset
+
+ is strictly convex and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is strictly increasing.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{assumption}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+GLM-UCB Method and Potentially Large Constant.
+\end_layout
+
+\begin_layout Standard
+The canonical algorithm for the GLB problem is GLM-UCB
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Filippi2010}
+\end_layout
+
+\end_inset
+
+,
+ which resolves the exploration–exploitation trade-off with an upper-confidence-bound strategy
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Agrawal1995}
+\end_layout
+
+\end_inset
+
+.
+ Under Assumptions
+\begin_inset space ~
+\end_inset
+
+1 and
+\begin_inset space ~
+\end_inset
+
+2 and an additional condition that the reward 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ is non-negative and almost surely bounded for all 
+\begin_inset Formula $t\in[T]$
+\end_inset
+
+,
+ GLM-UCB achieves the regret of 
+\begin_inset Formula $\Ocal\bigl(\kappa(\log T)^{3/2}\sqrt{T}\bigr),$
+\end_inset
+
+ where the 
+\begin_inset Formula $\Ocal(\cdot)$
+\end_inset
+
+-notation is used to highlight the dependence on 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ and the time horizon 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ The dependence on 
+\begin_inset Formula $T$
+\end_inset
+
+ matches that of the linear case,
+ where the 
+\begin_inset Formula $\widetilde{\Ocal}(\sqrt{T})$
+\end_inset
+
+ rate is nearly optimal
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Dani2008}
+\end_layout
+
+\end_inset
+
+.
+ The bottleneck lies in its 
+\emph on
+linear
+\emph default
+ dependence on the constant 
+\begin_inset Formula $\kappa$
+\end_inset
+
+,
+ which is defined by 
+\begin_inset Formula 
+\[
+\kappa\triangleq\frac{1}{c_{\mu}}=\frac{1}{\inf_{\xb\in\Xcal_{[T]},\,\theta\in\Theta}\mu'(\xb^{\top}\theta)}\quad\text{and}\quad\kappa_{*}\triangleq\frac{1}{\frac{1}{T}\sum_{t=1}^{T}\mu'(\xb_{t,*}^{\top}\theta_{*})},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\theta=\bigl\{\theta\in\RR^{d}\mid\norm{\theta}_{2}\le S\bigr\},\qquad\Xcal_{[T]}=\bigcup_{t\in[T]}\Xcal_{t}.$
+\end_inset
+
+ In the above,
+ we also define 
+\begin_inset Formula $\kappa_{*}$
+\end_inset
+
+ to reflect the local curvature at the optimal actions.
+ The linear dependence on 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ in GLM-UCB is generally undesirable,
+ as 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ can be prohibitively large in practice.
+ Notable examples include the Bernoulli distribution with 
+\begin_inset Formula $\mu(z)=1/(1+e^{-z})$
+\end_inset
+
+ and the Poisson distribution with 
+\begin_inset Formula $\mu(z)=e^{z}$
+\end_inset
+
+,
+ for which 
+\begin_inset Formula $\kappa=\Ocal(e^{S})$
+\end_inset
+
+,
+ growing exponentially with the parameter-norm bound 
+\begin_inset Formula $S$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+2.2
+\begin_inset space \quad{}
+\end_inset
+
+New Progress with Self-Concordance
+\end_layout
+
+\begin_layout Standard
+The undesirable linear dependence on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\kappa$
+\end_inset
+
+ has motivated the development of algorithms with improved theoretical guarantees.
+ By leveraging the 
+\emph on
+self-concordance
+\emph default
+ of the loss,
+ rooted in convex optimization and later used in the analysis of logistic regression
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Bach2010}
+\end_layout
+
+\end_inset
+
+,
+ recent studies
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Russac2021,Lee2024,Sawarni2024}
+\end_layout
+
+\end_inset
+
+ have derived regret bounds with substantially reduced dependence on
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\kappa$
+\end_inset
+
+ for GLB.
+ Following this line,
+ we also adopt the self-concordance assumption here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{assumption}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+Self-Concordance
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ The link function satisfies 
+\begin_inset Formula $|\mu''(z)|\le R\cdot\mu'(z)$
+\end_inset
+
+ for all 
+\begin_inset Formula $z\in\RR$
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{assumption}
+\end_layout
+
+\end_inset
+
+ Assumption
+\begin_inset space ~
+\end_inset
+
+3 holds for many widely used GLMs.
+ For GLMs where the reward is almost surely bounded in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $[0,R]$
+\end_inset
+
+,
+ the link function satisfies Assumption
+\begin_inset space ~
+\end_inset
+
+3 with coefficient
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $R$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citep{Sawarni2024}
+\end_layout
+
+\end_inset
+
+.
+ For example,
+ the Bernoulli distribution is 1-self-concordant.
+ Many unbounded GLMs also satisfy self-concordance,
+ including the Gaussian distribution (
+\begin_inset Formula $R=0$
+\end_inset
+
+),
+ Poisson distribution (
+\begin_inset Formula $R=1$
+\end_inset
+
+),
+ and Exponential distribution (
+\begin_inset Formula $R=0$
+\end_inset
+
+).
+ Leveraging self-concordance,
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{Lee2024}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{Sawarni2024}
+\end_layout
+
+\end_inset
+
+ established improved regret bounds of order
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Ocal(T/\kappa_{*})$
+\end_inset
+
+.
+ In these results,
+ the potentially large constant
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\kappa_{*}$
+\end_inset
+
+ appears in the denominator,
+ which largely improves the
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Ocal(\kappa\sqrt{T})$
+\end_inset
+
+ bound by
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{Filippi2010}
+\end_layout
+
+\end_inset
+
+.
+ However,
+ their methods still incur
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Ocal(t)$
+\end_inset
+
+ time and space complexities per round.
+ Our goal is to design a method with low computational cost while maintaining strong regret guarantees.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{remark}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[
+\end_layout
+
+\end_inset
+
+Unbounded GLMs
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\end_inset
+
+ Our GLM assumptions are aligned with the recent work of
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{Lee2024}
+\end_layout
+
+\end_inset
+
+,
+ which are more general than the canonical GLM formulation introduced in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{Filippi2010}
+\end_layout
+
+\end_inset
+
+ and later adopted in
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{Sawarni2024}
+\end_layout
+
+\end_inset
+
+.
+ Besides Assumptions
+\begin_inset space ~
+\end_inset
+
+1 and
+\begin_inset space ~
+\end_inset
+
+2,
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{Filippi2010}
+\end_layout
+
+\end_inset
+
+ further require the rewards to be almost surely bounded,
+ which automatically implies self-concordance and thus satisfies Assumption
+\begin_inset space ~
+\end_inset
+
+3 as shown by
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+citet{Sawarni2024}
+\end_layout
+
+\end_inset
+
+[Lemma
+\begin_inset space ~
+\end_inset
+
+2.2].
+ Beyond bounded distributions,
+ our GLM formulation accommodates unbounded ones,
+ such as Gaussian or Poisson.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{remark}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "references"
+options "abbrvnat"
+encoding "default"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
