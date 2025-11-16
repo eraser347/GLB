@@ -1272,7 +1272,7 @@ Here,
 \end_inset
 
 .
- The sufficient statistics 
+ The sufficient statistics function 
 \begin_inset Formula $h:\RR\to\RR$
 \end_inset
 
@@ -1294,7 +1294,7 @@ literal "false"
 \end_inset
 
 .
- The natural expoential family includes Gaussian,
+ The natural exponential family includes Gaussian,
  Bernoulli,
  Poisson,
  negative binomial,
@@ -1307,34 +1307,78 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-We make the following standard assumption on the log-partition function 
+Let 
+\begin_inset Formula $\psi_{h(R_{t})}(z)\defeq\log\EE[e^{zh(R_{t})}|X_{t},\Fcal_{t}].$
+\end_inset
+
+ 
+\begin_inset Formula $\Zcal\defeq\{z\in\RR:m(z)<\infty\}$
+\end_inset
+
+ denote the domain of 
 \begin_inset Formula $m$
 \end_inset
 
 .
- We write the parameter set 
-\begin_inset Formula $\Theta$
+ Trivially,
+ 
+\begin_inset Formula $0\in\Zcal$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Assumption
-(Log-Partition function) There exists a closed bounded set 
-\begin_inset Formula $\Zcal\subseteq\RR$
+.
+ Let 
+\begin_inset Formula $R_{0}$
 \end_inset
 
- that contains the linear predictor candidate set 
-\begin_inset Formula $\Zcal\supseteq\{x^{\top}\theta:\theta\in\Theta,x\in\cup_{t=1}^{T}\Xcal_{t}\}$
+ denote the random variable sampled from a distribution 
+\begin_inset Formula $ $
 \end_inset
 
-,
- which is known to the learner.
- The log-partition function 
+ and for any 
+\begin_inset Formula $z\in\RR$
+\end_inset
+
+ the log-cumulant function 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+ Thus,
+ 
+\begin_inset Formula $\Zcal=\{z\in\RR:\psi_{h(r_{t})}(z)<\infty\}$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $\psi_{h(r_{t})}$
+\end_inset
+
+ is convex,
+ the domain 
+\begin_inset Formula $\Zcal$
+\end_inset
+
+ is always convex in 
+\begin_inset Formula $\RR$
+\end_inset
+
+ and thus it is an interval.
+ We make the following standard assumption on the log-partition function 
 \begin_inset Formula $m$
 \end_inset
 
- is three times continuously differentiable on the bounded closed linear predictor set 
+.
+ 
+\end_layout
+
+\begin_layout Assumption
+(Log-Partition function) The log-partition function 
+\begin_inset Formula $m$
+\end_inset
+
+ is three times continuously differentiable on 
 \begin_inset Formula $\Zcal$
 \end_inset
 
@@ -1375,6 +1419,11 @@ name "prop:log_partition"
 \end_inset
 
 ,
+ for any 
+\begin_inset Formula $Z_{t}\in\Zcal$
+\end_inset
+
+,
  
 \begin_inset Formula 
 \begin{align*}
@@ -1412,13 +1461,16 @@ nolink "false"
 \begin_inset Formula $\mu^{\prime}$
 \end_inset
 
- must be positive on the linear predictor space 
+ must be positive on 
 \begin_inset Formula $\Zcal$
 \end_inset
 
+ to imply an valid distribution of 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
 .
- Using the min-max theorem for the continous function we derive the following properties.
- 
+ Using the min-max theorem for the continuous function we derive the following properties.
 \end_layout
 
 \begin_layout Proposition
@@ -1428,7 +1480,11 @@ name "prop:log_partition_bound"
 
 \end_inset
 
- (Mean function on the bounded set) There exist constants 
+ (Mean function on the bounded set) For a bounded interval 
+\begin_inset Formula $[-S,S]\subseteq\Zcal,$
+\end_inset
+
+ there exist constants 
 \begin_inset Formula $L>0$
 \end_inset
 
@@ -1437,7 +1493,7 @@ name "prop:log_partition_bound"
 \end_inset
 
  depending on 
-\begin_inset Formula $\Zcal$
+\begin_inset Formula $S$
 \end_inset
 
  and 
@@ -1449,10 +1505,10 @@ name "prop:log_partition_bound"
 \end_inset
 
  for all 
-\begin_inset Formula $z\in\Zcal.$
+\begin_inset Formula $z\in[-S,S].$
 \end_inset
 
- 
+ Further 
 \end_layout
 
 \begin_layout Standard
@@ -1470,7 +1526,7 @@ name "prop:tail_bound"
 \end_inset
 
  (Tail bound for the exponential family.) Let 
-\begin_inset Formula $m^{*}(x)\defeq\sup_{z\in\RR}\{zx-m(z)\}$
+\begin_inset Formula $m^{*}(x)\defeq\sup_{z\in\Zcal}\{zx-m(z)\}$
 \end_inset
 
  denote the convex conjugate of 
@@ -1498,12 +1554,136 @@ name "prop:tail_bound"
  
 \begin_inset Formula 
 \[
-\PP\big(|Y_{t}-\mu_{t}|\ge x\big)\le e^{-B_{m^{*}}(\mu_{t}+x,\mu_{t}\big)}.
+\PP\big(|Y_{t}-\mu_{t}|\ge x\big)\le2e^{-B_{m^{*}}(\mu_{t}+x,\mu_{t}\big)}
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Proof
+Let us write the centered random variable 
+\begin_inset Formula $\bar{Y}_{t}:=Y_{t}-\mu_{t}$
+\end_inset
+
+.
+ By the Chernoff method,
+ for 
+\begin_inset Formula $\lambda\in[0,\alpha^{-1}]$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\PP(\bar{Y}_{t}>x)\le & e^{-\lambda x}\EE[\exp(\lambda\bar{Y}_{t})]\\
+= & \exp(m(z_{t}+\lambda)-m(z_{t})-\lambda m^{\prime}(z_{t})-\lambda x).
+\end{align*}
+
+\end_inset
+
+To minimize over 
+\begin_inset Formula $\lambda>0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\mu(z_{t}+\lambda)-\mu(z_{t})-x
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $x\le\mu(z_{t}+\alpha^{-1})-\mu(z_{t})$
+\end_inset
+
+ then we set 
+\begin_inset Formula $\lambda=\mu^{-1}\big(\mu(z_{t})+x\big)-z_{t}$
+\end_inset
+
+ and thus by the duality of the Bregman divergence,
+\begin_inset Formula 
+\begin{align*}
+\PP(\bar{Y}_{t}>x)\le & \exp(B_{m}(z_{t}+\lambda,z_{t})-\lambda x)\\
+= & \exp\Big(B_{m^{*}}\big(\mu_{t},\mu(z_{t}+\lambda)\big)-\lambda x\Big)\\
+= & \exp\Big(B_{m^{*}}\big(\mu_{t},\mu_{t}+x\big)-\mu^{-1}\big(\mu_{t}+x\big)x+z_{t}x\Big),
+\end{align*}
+
+\end_inset
+
+where we use the shorthand notation 
+\begin_inset Formula $\mu_{t}\defeq\mu(z_{t})$
+\end_inset
+
+.
+ Note that
+\begin_inset Formula 
+\begin{align*}
+ & B_{m^{*}}\big(\mu_{t},\mu_{t}+x\big)-\mu^{-1}\big(\mu_{t}+x\big)x+z_{t}x\\
+ & =m^{*}(\mu_{t})-m^{*}(\mu_{t}+x)+(m^{*})^{\prime}(\mu_{t}+x)x-\mu^{-1}\big(\mu_{t}+x\big)x+z_{t}x\\
+ & =m^{*}(\mu_{t})-m^{*}(\mu_{t}+x)+z_{t}x,
+\end{align*}
+
+\end_inset
+
+where the last equality uses the fact 
+\begin_inset Formula $(m^{*})^{\prime}=\mu^{-1}$
+\end_inset
+
+.
+ Thus,
+\begin_inset Formula 
+\begin{align*}
+m^{*}(\mu_{t})-m^{*}(\mu_{t}+x)+z_{t}x= & -\Big(m^{*}(\mu_{t}+x)-m^{*}(\mu_{t})-(m^{*})^{\prime}(\mu_{t})x\Big)\\
+= & -B_{m^{*}}(\mu_{t}+x,\mu_{t}).
+\end{align*}
+
+\end_inset
+
+Thus,
+ for 
+\begin_inset Formula $x\le\mu(z_{t}+\alpha^{-1})-\mu(z_{t})$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\PP(\bar{Y}_{t}>x)\le e^{-B_{m^{*}}(\mu_{t}+x,\mu_{t})}.
+\]
+
+\end_inset
+
+For the case of 
+\begin_inset Formula $x>\mu(z_{t}+\alpha^{-1})-\mu(z_{t}),$
+\end_inset
+
+ we set 
+\begin_inset Formula $\lambda=\alpha^{-1}$
+\end_inset
+
+.
+ Thus,
+\begin_inset Formula 
+\begin{align*}
+\PP(\bar{Y}_{t}>x)\le & \exp\big(B_{m}(z_{t}+\alpha^{-1},z_{t})-\alpha^{-1}x\big)\\
+= & \exp\big(B_{m^{*}}\big(\mu_{t},\mu(z_{t}+\alpha^{-1}))-\alpha^{-1}x\big)
+\end{align*}
+
+\end_inset
+
+Note that
+\begin_inset Formula 
+\begin{align*}
+ & B_{m^{*}}\big(\mu_{t},\mu(z_{t}+\alpha^{-1}))-\alpha^{-1}x\\
+ & =(z_{t}+\alpha^{-1})\big(\mu_{t}-\mu(z_{t}+\alpha^{-1})\big)+\frac{\big(\mu_{t}-\mu(z_{t}+\alpha^{-1})\big)^{2}}{2\mu^{\prime}(z_{t}+\bar{\alpha})}-\alpha^{-1}x\\
+ & \le(z_{t}+\alpha^{-1})\big(\mu_{t}-\mu(z_{t}+\alpha^{-1})\big)+\frac{\big(\mu_{t}-\mu(z_{t}+\alpha^{-1})\big)^{2}}{2\mu^{\prime}(z_{t}+\bar{\alpha})}-\alpha^{-1}x
+\end{align*}
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1567,6 +1747,177 @@ name "lem:self_con"
 |\mu^{\prime\prime}(z)|\le\sqrt{L\log\frac{1}{\mu^{\prime}(z)}}\mu^{\prime}(z).
 \]
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+For 
+\begin_inset Formula $z\in\Zcal$
+\end_inset
+
+ let 
+\begin_inset Formula $R_{z}$
+\end_inset
+
+ denote a random variable that sampled from the distribution
+\begin_inset Formula 
+\[
+\PP(R_{z}=r|z)=g(r)\exp\big(zh(r)-m(z)\big),
+\]
+
+\end_inset
+
+and let 
+\begin_inset Formula $\bar{Y}_{z}=h(R_{z})-\EE[h(R_{z})|z]$
+\end_inset
+
+.
+ By Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:log_partition"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset Formula $\mu^{\prime\prime}(z)=\EE\Big[\bar{Y}_{z}^{3}\Big|z\Big]$
+\end_inset
+
+.
+ It is clear that
+\begin_inset Formula 
+\[
+|\mu^{\prime\prime}(z)|\le\EE\Big[\big|\bar{Y}_{z}\big|^{3}\Big|z\Big].
+\]
+
+\end_inset
+
+By the expectation of the nonegative random variables,
+\begin_inset Formula 
+\[
+\EE\Big[\big|\bar{Y}_{z}\big|^{3}\Big|z\Big]=\int_{0}^{\infty}\PP\big(\big|\bar{Y}_{z}\big|^{3}>x\big|z\big)dx=\int_{0}^{\infty}3u^{2}\PP\big(\big|\bar{Y}_{z}\big|>u\big|z\big)du,
+\]
+
+\end_inset
+
+where the last equality uses the change of variable 
+\begin_inset Formula $x=u^{3}$
+\end_inset
+
+.
+ Given a variable 
+\begin_inset Formula $a>1$
+\end_inset
+
+ to be optimized later,
+ 
+\begin_inset Formula 
+\[
+\EE\Big[\big|\bar{Y}_{z}\big|^{3}\Big|z\Big]=\int_{0}^{a}3u^{2}\PP\big(\big|\bar{Y}_{z}\big|>u\big|z\big)du+\int_{a}^{\infty}3u^{2}\PP\big(\big|\bar{Y}_{z}\big|>u\big|z\big)du.
+\]
+
+\end_inset
+
+For the first term,
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{a}3u^{2}\PP\big(\big|\bar{Y}_{z}\big|>u\big|z\big)du\le & \frac{3a}{2}\int_{0}^{a}2u\PP\big(\big|\bar{Y}_{z}\big|>u\big|z\big)du\\
+\le & \frac{3a}{2}\int_{0}^{\infty}2u\PP\big(\big|\bar{Y}_{z}\big|>u\big|z\big)du\\
+= & \frac{3a}{2}\int_{0}^{\infty}\PP\big(\big|\bar{Y}_{z}\big|^{2}>x\big|z\big)dx\\
+= & \frac{3a}{2}\EE[\bar{Y}_{z}^{2}|z]\\
+= & \frac{3a}{2}\mu^{\prime}(z).
+\end{align*}
+
+\end_inset
+
+Thus,
+\begin_inset Formula 
+\[
+\EE\Big[\big|\bar{Y}_{z}\big|^{3}\Big|z\Big]=\frac{3a}{2}\mu^{\prime}(z)+\int_{a}^{\infty}3u^{2}\PP\big(\big|\bar{Y}_{z}\big|>u\big|z\big)du.
+\]
+
+\end_inset
+
+For the second term,
+ by Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:tail_bound"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\int_{a}^{\infty}3u^{2}\PP\big(\big|\bar{Y}_{z}\big|>u\big|z\big)du\le\int_{a}^{\infty}3u^{2}e^{-B_{m^{*}}(\mu(z)+u,\mu(z)\big)}du.
+\]
+
+\end_inset
+
+Because 
+\begin_inset Formula $\mu(z):=\arg\min_{x\in\RR}D_{m^{*}}\big(x,\mu(z)\big)$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{1}{2}B_{m^{*}}(\mu(z)+u,\mu(z)\big)+\frac{1}{2}B_{m^{*}}(-\mu(z),\mu(z)\big)\ge B_{m^{*}}(\frac{u}{2},\mu(z)\big)
+\]
+
+\end_inset
+
+By definition of the Bregman divergence,
+ there exists 
+\begin_inset Formula $z_{u}\in[z,\mu^{-1}\big(\mu(z)+u\big)]$
+\end_inset
+
+ such that
+\begin_inset Formula 
+\begin{align*}
+B_{m^{*}}(\mu(z)+u,\mu(z)\big)= & m^{*}\big(\mu(z)+u\big)-m^{*}\big(\mu(z)\big)-(m^{*})^{\prime}\big(\mu(z)\big)u\\
+=\\
+= & \frac{u^{2}}{2\mu^{\prime}\big(z_{u}\big)},
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+m^{*}(a)= & \sup_{z\in\Zcal}\{az-m(z)\}\\
+= & \begin{cases}
+a\mu^{-1}(a)-m\big(\mu^{-1}(a)\big) & \mu^{-1}(a)\in\Zcal\\
+ & \mu^{-1}(a)
+\end{cases}
+\end{align*}
+
+\end_inset
+
+where the last inequality uses the fact 
+\begin_inset Formula $(m^{*})^{\prime\prime}(x)=1/\mu^{\prime}(\mu^{-1}(x))$
+\end_inset
+
+.
+ Provided that 
+\begin_inset Formula $u\ge\mu^{\prime}(z_{u})$
 \end_inset
 
 
